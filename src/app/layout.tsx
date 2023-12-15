@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Link from 'next/link'
-import { Title } from '@/components/typografy'
+import Header from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'Gvão movies',
@@ -14,16 +13,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="pt-BR" className='h-full'>
+      <body className='min-h-screen bg-neutral-300'>
 
-        <header>
-          <Link href={'/'}>
-            <Title>Gvão Movies</Title>
-          </Link>
-        </header>
+        <Header />
 
-        {children}
+        <main className='mt-12 '>
+          {children}
+        </main>
 
       </body>
     </html>
