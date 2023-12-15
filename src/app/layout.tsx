@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Gvão movies',
@@ -18,9 +19,11 @@ export default function RootLayout({
 
         <Header />
 
-        <main className='mt-12 '>
+        <main className='mt-12 min-h-screen'>
           {children}
         </main>
+
+        <Footer />
 
       </body>
     </html>
