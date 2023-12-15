@@ -1,7 +1,14 @@
+import { SubTitle } from "@/components/typography";
+
 export default function Home() {
   return (
-    <main>
-      home
-    </main>
+    <section>
+
+      <div className="container">
+        <SubTitle>Melhores filmes</SubTitle>
+      </div>
+
+    </section>
   )
 }
+

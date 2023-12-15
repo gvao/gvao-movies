@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Title } from "./typografy";
+import { Title } from "./typography";
 
 export default function Header() {
     return (
