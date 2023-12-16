@@ -24,9 +24,11 @@ type OutputTrends = {
     total_results: number
 }
 
+export type TimeWindow = 'day' | 'week'
+
 type InputTrends = {
     page?: number,
-    time_window?: 'day' | 'week'
+    time_window?: TimeWindow
 }
 
 type Movie = {
