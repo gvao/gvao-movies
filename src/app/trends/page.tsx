@@ -1,4 +1,4 @@
-import { TrendsList } from "@/components/trands";
+import { TrendsList } from "@/components/trends";
 import { Title } from "@/components/typography";
 
 export default async function TrendPage({ searchParams }: { searchParams: { page: string, type: string } }) {
