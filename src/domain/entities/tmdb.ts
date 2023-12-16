@@ -29,14 +29,68 @@ type InputTrends = {
     time_window?: 'day' | 'week'
 }
 
+type Movie = {
+    adult: boolean,
+    backdrop_path: string,
+    belongs_to_collection: unknown,
+    budget: number,
+    genres: { id: number, name: string }[],
+    homepage: string,
+    id: number,
+    imdb_id: string,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    production_companies: {
+        id: number,
+        logo_path: unknown,
+        name: string,
+        origin_country: string
+    }[],
+    production_countries: { iso_3166_1: string, name: string }[],
+    release_date: string,
+    revenue: number,
+    runtime: number,
+    spoken_languages: { english_name: string, iso_639_1: string, name: string }[],
+    status: string,
+    tagline: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number
+}
+
+
 export class TMDB {
     private accountId = process.env.TMDB_ACCOUNT_ID
     private apiKey = process.env.TMDB_ACESS_TOKEN
     URL_BASE = 'https://api.themoviedb.org'
 
+    static getImage(path: string): string {
+        return `https://image.tmdb.org/t/p/w500/${path}`
+    }
+
+    async getMovieById(id: string): Promise<Movie> {
+        const path = `/3/movie/${id}?language=pt-BR`;
+        const url = this.URL_BASE + path
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${this.apiKey}`
+            }
+        };
+
+        const response = await fetch(url, options)
+
+        return await response.json()
+    }
+
     getTrends = async ({ page = 1, time_window = 'day' }: InputTrends): Promise<OutputTrends> => {
 
-        const url = `${this.URL_BASE}/3/trending/all/day?language=pt-BR&page=${page}`;
+        const url = `${this.URL_BASE}/3/trending/all/${time_window}?language=pt-BR&page=${page}`;
         const options: RequestInit = {
             method: 'GET',
             headers: {
@@ -58,9 +112,6 @@ export class TMDB {
         return await response.json()
     }
 
-    static getImage(path: string): string{
-        return `https://image.tmdb.org/t/p/w500/${path}`
-    }
 
     async getAccount() {
         const url = this.URL_BASE + `/3/account/${this.accountId}`;
