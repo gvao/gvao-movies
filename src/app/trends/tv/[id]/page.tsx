@@ -6,7 +6,7 @@ const DetailsPage = async ({ params }: { params: { id: string } }) => {
     const { backdrop_path, name, popularity, overview } = await tmdb.getTvById(params.id)
 
     return <>
-        <img src={TMDB.getImage(backdrop_path)} alt="backdrop" className="w-full" />
+        <img src={TMDB.getImage(backdrop_path, "original")} alt="backdrop" className="w-full" />
         <Title>{name}</Title>
         <span>{popularity}</span>
         <p>{overview}</p>

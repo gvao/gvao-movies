@@ -158,8 +158,8 @@ export class TMDB {
     private apiKey = process.env.TMDB_ACESS_TOKEN
     URL_BASE = 'https://api.themoviedb.org'
 
-    static getImage(path: string): string {
-        return `https://image.tmdb.org/t/p/w500/${path}`
+    static getImage(path: string, size_type: "w500" | "original" = "w500"): string {
+        return `https://image.tmdb.org/t/p/${size_type}/${path}`
     }
 
     async getTvById(series_id: string): Promise<Tv> {
