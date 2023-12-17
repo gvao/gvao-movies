@@ -1,12 +1,10 @@
 'use client'
 
 import { BiCaretLeft } from "react-icons/bi";
+import { IconContext } from 'react-icons'
 import { useRouter, usePathname } from "next/navigation"
 
-useRouter
-
 export const BackIcon = () => {
-
     const router = useRouter()
     const pathname = usePathname()
 
@@ -15,8 +13,13 @@ export const BackIcon = () => {
     }
 
     return (
-        <button onClick={goBack}>
-            <BiCaretLeft />
+        <button
+            onClick={goBack}
+            className="h-full p-2 aspect-square flex items-center"
+        >
+            <IconContext.Provider value={{ size: "fit-content" }} >
+                <BiCaretLeft />
+            </IconContext.Provider>
         </button>
     )
 }

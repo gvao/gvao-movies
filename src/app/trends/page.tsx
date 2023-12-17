@@ -1,4 +1,4 @@
-import { TrendsList } from "@/components/trends";
+import Trends from "@/components/trends";
 import { Title } from "@/components/typography";
 
 export default async function TrendPage({ searchParams }: { searchParams: { page: string, type: string } }) {
@@ -13,7 +13,7 @@ export default async function TrendPage({ searchParams }: { searchParams: { page
           <Title>GM</Title>
         </div>
 
-        <TrendsList page={+page || 1} filterBy={type} time_window="week" />
+        <Trends page={+page || 1} filterBy={type} time_window="week" />
 
       </div>
     </section>
