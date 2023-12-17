@@ -3,16 +3,13 @@ import { ReactNode } from "react"
 
 import { TMDB } from "@/domain/entities/tmdb"
 import { SubTitle } from '../components/typography'
+import Search from '../components/search'
 
 const DefaultPage = async () => {
 
     return (
         <>
-            <ul className="flex flex-col gap-2 p-4">
-                <DefaultLink href={'/Movies'}>Movies</DefaultLink>
-
-            </ul>
-
+            <Search />
             <TrendsList />
         </>
     )
