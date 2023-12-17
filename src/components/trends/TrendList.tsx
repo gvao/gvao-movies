@@ -2,10 +2,10 @@ import { MovieDetails } from "@/domain/entities/tmdb"
 import Link from "next/link"
 import { TrendItem } from "./TrendItem"
 
-export const TrendsList = ({ results, filterBy }: { results: MovieDetails[], filterBy: string }) => (
+export const TrendsList = ({ data, filterBy }: { data: MovieDetails[], filterBy?: string }) => (
     <ul className="flex flex-wrap gap-4 p-4" >
         {
-            results
+            data
                 .filter(result => {
                     if (!filterBy) return true
                     return result.media_type === filterBy

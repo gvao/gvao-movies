@@ -5,7 +5,7 @@ import { TrendsFilterByType } from "./trendsFilterByType";
 import { TrendsPagination } from "./TrendsPagination";
 import { TrendsList } from "./TrendList";
 
-const useTrends = async ({ page, time_window }: UseTrendsInput) => {
+export const useTrends = async ({ page, time_window }: UseTrendsInput) => {
     const tmdb = new TMDB()
     const { results } = await tmdb.getTrends({ page, time_window })
 
@@ -18,7 +18,7 @@ const Trends = async ({ page, filterBy, time_window = "day" }: TrendsListProps) 
     return <>
         <TrendsFilterByType results={results} page={page} filterBy={filterBy} />
 
-        <TrendsList results={results} filterBy={filterBy} />
+        <TrendsList data={results} filterBy={filterBy} />
         <TrendsPagination page={page} />
     </>
 }
