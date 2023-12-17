@@ -183,6 +183,15 @@ export class TMDB {
         return await response.json()
     }
 
+    async search(query: string, page = 1, adult = false): Promise<any> {
+        const path = `/3/search/multi?query=${query}&include_adult=${adult}&language=en-US&page=${page}`;
+        const url = this.URL_BASE + path
+        const options = getOptions(this.apiKey!)
+
+        const response = await fetch(url, options)
+        return response.json()
+    }
+
     async getTrends({ page = 1, time_window = 'day' }: InputTrends): Promise<OutputTrends> {
 
         const url = `${this.URL_BASE}/3/trending/all/${time_window}?language=pt-BR&page=${page}`;
